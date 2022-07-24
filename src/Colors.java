@@ -2,7 +2,15 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Colors {
+/**
+ * Singleton.
+ * Implements all api Enum.
+ * Adds a name to each enum element using reflection.
+ * Returns true when comparing through == of the same element.
+ * Elements are immutable.
+ * This is SuperEnum, mhahaha!
+ */
+public final class Colors {
     private static final List<Colors> values = new ArrayList<>();
     private static int ordinalCounter = 0;
     private final int ordinal = ordinalCounter++;
@@ -40,9 +48,9 @@ public class Colors {
         return values.toArray(new Colors[]{});
     }
 
-    public static Colors findByIndex(int index) {
-        if (index >= 0 || index < ordinalCounter) {
-            return values.get(index);
+    public static Colors findByOrdinal(int ordinal) {
+        if (ordinal >= 0 || ordinal < ordinalCounter) {
+            return values.get(ordinal);
         } else {
             throw new IllegalArgumentException();
         }
